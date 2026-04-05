@@ -4,15 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for {@link InputValidator}.
- *
- * Each public method is tested against:
- *  - Valid boundary inputs
- *  - Invalid / edge-case inputs (null, empty, too long, wrong format)
- *
- * These tests run on the JVM with no Android framework dependency.
- */
 public class InputValidatorTest {
 
 	// =========================================================================
@@ -93,7 +84,6 @@ public class InputValidatorTest {
 
 	@Test
 	public void isValidPhoneNumber_withDashes_returnsTrue() {
-		// 555-867-5309 → stripped to 5558675309 (10 digits) → valid
 		assertTrue(InputValidator.isValidPhoneNumber("555-867-5309"));
 	}
 

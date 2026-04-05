@@ -5,11 +5,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for the {@link PhoneNumber} model.
- *
- * Covers default state, parameterised construction, and all setters/getters.
- */
 public class PhoneNumberTest {
 
 	private PhoneNumber phoneNumber;

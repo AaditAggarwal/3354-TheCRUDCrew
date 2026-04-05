@@ -5,9 +5,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for the {@link Group} model.
- */
 public class GroupTest {
 
 	private Group group;

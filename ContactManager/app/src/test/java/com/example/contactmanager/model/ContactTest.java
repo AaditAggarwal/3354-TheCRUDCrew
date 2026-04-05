@@ -8,16 +8,6 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for the {@link Contact} model.
- *
- * Tests cover:
- *  - Default construction state
- *  - Setter / getter round-trips
- *  - Multiple phone-number management
- *  - Derived helper methods (getPrimaryPhoneNumber, getInitial)
- *  - Blacklist and group assignment flags
- */
 public class ContactTest {
 
 	private Contact contact;

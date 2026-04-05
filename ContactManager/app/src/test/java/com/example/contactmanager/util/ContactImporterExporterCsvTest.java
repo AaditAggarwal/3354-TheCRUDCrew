@@ -6,15 +6,6 @@ import java.lang.reflect.Method;
 
 import static org.junit.Assert.*;
 
-/**
- * Unit tests for the CSV parsing and escaping logic inside {@link ContactImporterExporter}.
- *
- * Because {@code parseCsvLine} and {@code escapeCsv} are private static helpers,
- * we access them via reflection so the production class does not need to widen
- * its visibility just for tests.
- *
- * These tests run entirely on the JVM — no Android context is required.
- */
 public class ContactImporterExporterCsvTest {
 
 	// =========================================================================
@@ -170,14 +161,12 @@ public class ContactImporterExporterCsvTest {
 	//  Reflection helpers
 	// =========================================================================
 
-	/** Calls the private static {@code escapeCsv(String)} method. */
 	private static String escape(String value) throws Exception {
 		Method m = ContactImporterExporter.class.getDeclaredMethod("escapeCsv", String.class);
 		m.setAccessible(true);
 		return (String) m.invoke(null, value);
 	}
 
-	/** Calls the private static {@code parseCsvLine(String)} method. */
 	private static String[] parse(String line) throws Exception {
 		Method m = ContactImporterExporter.class.getDeclaredMethod("parseCsvLine", String.class);
 		m.setAccessible(true);
