@@ -18,14 +18,6 @@ import com.example.contactmanager.model.Contact;
 
 import java.util.List;
 
-/**
- * BlacklistActivity (Controller): Displays all blacklisted contacts.
- *
- * Long-pressing a contact offers to remove it from the blacklist.
- * Tapping a contact navigates to its detail view.
- *
- * Satisfies FR 2: Blacklist management (block SMS and phone calls).
- */
 public class BlacklistActivity extends AppCompatActivity
         implements ContactAdapter.OnContactClickListener {
 

@@ -23,15 +23,6 @@ import com.example.contactmanager.model.Contact;
 import com.example.contactmanager.model.Group;
 import com.google.android.material.chip.Chip;
 
-/**
- * ContactDetailActivity (Controller): Displays all information about one contact.
- *
- * Features:
- *  - Show photo (or initial avatar), name, group, blacklist status
- *  - List all phone numbers with Call and SMS action buttons (FR 3)
- *  - Toggle blacklist status (FR 2)
- *  - Navigate to edit or delete the contact
- */
 public class ContactDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_CONTACT_ID = "contact_id";
@@ -130,7 +121,7 @@ public class ContactDetailActivity extends AppCompatActivity {
 
     private void promptToggleBlacklist() {
         boolean willBlacklist = !contact.isBlacklisted();
-        String title   = willBlacklist ? "Blacklist Contact"        : "Remove from Blacklist";
+        String title   = willBlacklist ? "Blacklist Contact" : "Remove from Blacklist";
         String message = willBlacklist
             ? "Incoming calls and SMS from " + contact.getName() + " will be blocked."
             : contact.getName() + " will be removed from the blacklist.";

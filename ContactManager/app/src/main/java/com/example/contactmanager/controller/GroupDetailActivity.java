@@ -19,16 +19,6 @@ import com.example.contactmanager.model.Group;
 
 import java.util.List;
 
-/**
- * GroupDetailActivity (Controller): Shows contacts belonging to a specific group.
- *
- * Allows:
- *  - Viewing members of the group
- *  - Long-pressing a contact to remove it from the group
- *  - Adding contacts to the group via a multi-select dialog
- *
- * Satisfies FR 4: Manage contact groups (add/remove contacts).
- */
 public class GroupDetailActivity extends AppCompatActivity
         implements ContactAdapter.OnContactClickListener {
 

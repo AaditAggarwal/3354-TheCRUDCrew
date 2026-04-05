@@ -1,4 +1,0 @@
-com.example.contactmanager.test.app-androidTest-0 C:\Users\r6awe\Downloads\ContactManager\ContactManager\app\build\generated\res\resValues\androidTest\debug
-com.example.contactmanager.test.app-mergeDebugAndroidTestResources-1 C:\Users\r6awe\Downloads\ContactManager\ContactManager\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.example.contactmanager.test.app-mergeDebugAndroidTestResources-2 C:\Users\r6awe\Downloads\ContactManager\ContactManager\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.example.contactmanager.test.app-debugAndroidTest-3 C:\Users\r6awe\Downloads\ContactManager\ContactManager\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

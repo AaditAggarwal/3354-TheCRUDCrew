@@ -20,12 +20,6 @@ import com.example.contactmanager.model.PhoneNumber;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * PhoneNumberInputAdapter: Editable phone number rows used in AddEditContactActivity.
- * Supports adding and removing rows, selecting phone type, and live editing the number.
- *
- * Satisfies FR 1: A contact may have one or more phone numbers.
- */
 public class PhoneNumberInputAdapter
         extends RecyclerView.Adapter<PhoneNumberInputAdapter.ViewHolder> {
 
@@ -42,7 +36,6 @@ public class PhoneNumberInputAdapter
         notifyDataSetChanged();
     }
 
-    /** Appends a blank mobile-type phone number row. */
     public void addPhoneNumber() {
         phoneNumbers.add(new PhoneNumber(0, 0, "", "mobile"));
         notifyItemInserted(phoneNumbers.size() - 1);
@@ -50,7 +43,6 @@ public class PhoneNumberInputAdapter
         notifyDataSetChanged();
     }
 
-    /** Returns the current list (may contain empty strings – caller should filter). */
     public List<PhoneNumber> getPhoneNumbers() {
         return new ArrayList<>(phoneNumbers);
     }

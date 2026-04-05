@@ -21,13 +21,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
 
-/**
- * GroupsActivity (Controller): Displays and manages contact groups.
- *
- * Satisfies:
- *  FR 4 – Create contact groups; FR 4 – Delete groups.
- *  FR 5 – Navigate into a group to add/remove contacts.
- */
 public class GroupsActivity extends AppCompatActivity
         implements GroupAdapter.OnGroupClickListener {
 

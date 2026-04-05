@@ -12,18 +12,6 @@ import com.example.contactmanager.model.PhoneNumber;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ContactRepository: Single point of access for all database operations.
- * Acts as the Model layer in MVC — Activities (Controllers) call this,
- * never the DatabaseHelper directly.
- *
- * Handles:
- *  - Contact CRUD
- *  - Phone number CRUD
- *  - Group CRUD
- *  - Blacklist management
- *  - Search and sort queries
- */
 public class ContactRepository {
 
     private final DatabaseHelper dbHelper;
@@ -39,10 +27,6 @@ public class ContactRepository {
     private ContactRepository(Context context) {
         dbHelper = DatabaseHelper.getInstance(context);
     }
-
-    // =========================================================================
-    //  CONTACT CRUD
-    // =========================================================================
 
     /** Inserts a new contact and its phone numbers. Returns the new row ID. */
     public long addContact(Contact contact) {
@@ -76,19 +60,11 @@ public class ContactRepository {
         return contact;
     }
 
-    /**
-     * Returns all contacts sorted alphabetically by name (A–Z).
-     * Each contact includes its phone numbers.
-     */
     public List<Contact> getAllContacts() {
         return queryContacts(null, null,
             DatabaseHelper.COL_CONTACT_NAME + " COLLATE NOCASE ASC");
     }
 
-    /**
-     * Returns contacts sorted by group name first, then contact name.
-     * Contacts with no group appear last under "No Group".
-     */
     public List<Contact> getContactsSortedByGroup() {
         List<Contact> contacts = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -113,7 +89,6 @@ public class ContactRepository {
         return contacts;
     }
 
-    /** Returns contacts whose name contains the query string (case-insensitive). */
     public List<Contact> searchContacts(String query) {
         return queryContacts(
             DatabaseHelper.COL_CONTACT_NAME + " LIKE ?",
@@ -122,7 +97,6 @@ public class ContactRepository {
         );
     }
 
-    /** Updates an existing contact's fields and replaces all phone numbers. */
     public int updateContact(Contact contact) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = contactToValues(contact);
@@ -237,7 +211,6 @@ public class ContactRepository {
         );
     }
 
-    /** Deletes a group and unassigns all its contacts (contacts are NOT deleted). */
     public int deleteGroup(long id) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         // Unassign contacts from this group
@@ -254,7 +227,6 @@ public class ContactRepository {
         );
     }
 
-    /** Returns all contacts assigned to a specific group, sorted by name. */
     public List<Contact> getContactsInGroup(long groupId) {
         return queryContacts(
             DatabaseHelper.COL_CONTACT_GROUP_ID + "=?",
@@ -278,11 +250,6 @@ public class ContactRepository {
         return count;
     }
 
-    // =========================================================================
-    //  BLACKLIST
-    // =========================================================================
-
-    /** Returns all contacts marked as blacklisted. */
     public List<Contact> getBlacklistedContacts() {
         return queryContacts(
             DatabaseHelper.COL_CONTACT_BLACKLISTED + "=1", null,
@@ -290,7 +257,6 @@ public class ContactRepository {
         );
     }
 
-    /** Sets or clears the blacklist flag for a contact. */
     public void setBlacklisted(long contactId, boolean blacklisted) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -300,10 +266,6 @@ public class ContactRepository {
             new String[]{String.valueOf(contactId)});
     }
 
-    /**
-     * Returns true if the given phone number belongs to any blacklisted contact.
-     * Used by the SmsReceiver to decide whether to block an incoming message.
-     */
     public boolean isNumberBlacklisted(String number) {
         if (number == null || number.isEmpty()) return false;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
@@ -323,9 +285,6 @@ public class ContactRepository {
         return result;
     }
 
-    // =========================================================================
-    //  HELPERS
-    // =========================================================================
 
     private List<Contact> queryContacts(String selection, String[] selectionArgs, String orderBy) {
         List<Contact> contacts = new ArrayList<>();

@@ -14,12 +14,6 @@ import com.example.contactmanager.model.PhoneNumber;
 
 import java.util.List;
 
-/**
- * PhoneNumberAdapter: Read-only display of phone numbers in ContactDetailActivity.
- * Each row shows the number, its type label, and buttons to call or send an SMS.
- *
- * Satisfies FR 3: Make calls and send SMS directly from the contact view.
- */
 public class PhoneNumberAdapter extends RecyclerView.Adapter<PhoneNumberAdapter.ViewHolder> {
 
     private final List<PhoneNumber> phoneNumbers;

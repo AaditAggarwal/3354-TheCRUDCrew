@@ -34,7 +34,6 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int TYPE_HEADER  = 0;
     private static final int TYPE_CONTACT = 1;
 
-    /** Mixed list: items are either Contact objects or String headers. */
     private final List<Object> items = new ArrayList<>();
 
     private final OnContactClickListener listener;
@@ -48,12 +47,6 @@ public class ContactAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.listener = listener;
     }
 
-    /**
-     * Rebuilds the item list.
-     * @param contacts       the full contact list (already sorted appropriately)
-     * @param groupedView    true → insert group-name section headers between groups
-     * @param repository     needed to look up group names when groupedView is true
-     */
     public void updateContacts(List<Contact> contacts, boolean groupedView,
                                ContactRepository repository) {
         items.clear();

@@ -14,7 +14,6 @@ import com.example.contactmanager.model.Group;
 import java.util.ArrayList;
 import java.util.List;
 
-/** GroupAdapter: Displays a list of contact groups. */
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupViewHolder> {
 
     private List<Group> groups = new ArrayList<>();

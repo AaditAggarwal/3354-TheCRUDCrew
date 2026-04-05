@@ -1,14 +1,10 @@
 package com.example.contactmanager.model;
 
-/**
- * Model: Represents a single phone number entry belonging to a contact.
- * Supports a type label (mobile, home, work, other).
- */
 public class PhoneNumber {
     private long id;
     private long contactId;
     private String number;
-    private String type; // mobile | home | work | other
+    private String type;
 
     public PhoneNumber() {
         this.type = "mobile";

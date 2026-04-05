@@ -3,11 +3,6 @@ package com.example.contactmanager.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Model: Represents a contact entry.
- * Stores name, multiple phone numbers, an optional photo URI,
- * blacklist status, and an optional group assignment.
- */
 public class Contact {
     private long id;
     private String name;
@@ -51,7 +46,6 @@ public class Contact {
     public long getGroupId() { return groupId; }
     public void setGroupId(long groupId) { this.groupId = groupId; }
 
-    /** Returns the first phone number, or null if none exist. */
     public String getPrimaryPhoneNumber() {
         if (phoneNumbers != null && !phoneNumbers.isEmpty()) {
             return phoneNumbers.get(0).getNumber();
@@ -59,7 +53,6 @@ public class Contact {
         return null;
     }
 
-    /** Returns first letter of name for avatar placeholder. */
     public String getInitial() {
         if (name != null && !name.isEmpty()) {
             return String.valueOf(name.charAt(0)).toUpperCase();

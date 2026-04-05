@@ -18,27 +18,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ContactExporter: Handles CSV-based export and import of contact data.
- *
- * CSV format:
- *   Name, PhoneNumber, PhoneType, PhotoUri, Blacklisted (0/1), GroupId
- *
- * Each row represents one phone number.
- * A contact with multiple numbers spans multiple rows (same Name).
- * A contact with no numbers emits one row with empty number fields.
- *
- * Satisfies FR 6: Export current contact list to file; import from such file.
- */
-public class ContactExporter {
+public class ContactImporterExporter {
 
     private static final String TAG = "ContactExporter";
     private static final String EXPORT_FILENAME = "contacts_export.csv";
 
-    /**
-     * Exports the contact list to a CSV file in the app's external files dir.
-     * @return a content URI (FileProvider) for sharing, or null on failure.
-     */
     public static Uri exportContacts(Context context, List<Contact> contacts) {
         try {
             File exportDir = new File(context.getExternalFilesDir(null), "exports");
@@ -87,12 +71,6 @@ public class ContactExporter {
         }
     }
 
-    /**
-     * Imports contacts from a CSV file at the given URI.
-     * Consecutive rows with the same name are treated as additional phone numbers
-     * for the same contact.
-     * @return the number of contacts successfully imported.
-     */
     public static int importContacts(Context context, Uri uri, ContactRepository repository) {
         int count = 0;
         try {

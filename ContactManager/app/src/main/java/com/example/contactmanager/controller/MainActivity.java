@@ -28,25 +28,12 @@ import com.example.contactmanager.R;
 import com.example.contactmanager.adapter.ContactAdapter;
 import com.example.contactmanager.database.ContactRepository;
 import com.example.contactmanager.model.Contact;
-import com.example.contactmanager.util.ContactExporter;
+import com.example.contactmanager.util.ContactImporterExporter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * MainActivity (Controller): Entry point of the app.
- *
- * Responsibilities:
- *  - Display the master contact list
- *  - Handle search (by name) in real-time
- *  - Toggle sort order (by name / by group)
- *  - Navigate to Add, Groups, Blacklist screens
- *  - Trigger export and import operations
- *
- * MVC role: Controller — reads from ContactRepository (Model),
- * updates the RecyclerView (View).
- */
 public class MainActivity extends AppCompatActivity
         implements ContactAdapter.OnContactClickListener {
 
@@ -75,7 +62,7 @@ public class MainActivity extends AppCompatActivity
             if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                 Uri uri = result.getData().getData();
                 if (uri != null) {
-                    int count = ContactExporter.importContacts(this, uri, repository);
+                    int count = ContactImporterExporter.importContacts(this, uri, repository);
                     Toast.makeText(this,
                         "Imported " + count + " contact" + (count != 1 ? "s" : ""),
                         Toast.LENGTH_SHORT).show();
@@ -200,7 +187,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "No contacts to export", Toast.LENGTH_SHORT).show();
             return;
         }
-        Uri fileUri = ContactExporter.exportContacts(this, contacts);
+        Uri fileUri = ContactImporterExporter.exportContacts(this, contacts);
         if (fileUri != null) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/csv");

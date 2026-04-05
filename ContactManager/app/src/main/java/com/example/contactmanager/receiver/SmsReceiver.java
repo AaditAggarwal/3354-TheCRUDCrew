@@ -29,7 +29,7 @@ public class SmsReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (!"android.provider.Telephony.SMS_RECEIVED".equals(intent.getAction())) return;
+        if (!intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) return;
 
         Bundle bundle = intent.getExtras();
         if (bundle == null) return;
@@ -51,7 +51,6 @@ public class SmsReceiver extends BroadcastReceiver {
             if (smsMessage != null) {
                 String sender = smsMessage.getOriginatingAddress();
                 if (sender != null && repository.isNumberBlacklisted(sender)) {
-                    Log.i(TAG, "Blocking SMS from blacklisted number: " + sender);
                     abortBroadcast(); // Prevent delivery to other receivers
                     return;
                 }

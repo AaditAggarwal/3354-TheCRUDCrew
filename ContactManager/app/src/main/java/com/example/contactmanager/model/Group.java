@@ -1,9 +1,5 @@
 package com.example.contactmanager.model;
 
-/**
- * Model: Represents a contact group.
- * Contacts can be assigned to one group at a time.
- */
 public class Group {
     private long id;
     private String name;

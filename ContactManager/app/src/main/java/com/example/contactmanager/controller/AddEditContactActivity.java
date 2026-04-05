@@ -30,13 +30,6 @@ import com.example.contactmanager.util.InputValidator;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * AddEditContactActivity (Controller): Form for creating a new contact or editing an existing one.
- *
- * Satisfies:
- *  FR 1 – Add / edit contact name, multiple phone numbers, and optional photo.
- *  NFR  – Input validation before saving; clear error messages on invalid input.
- */
 public class AddEditContactActivity extends AppCompatActivity {
 
     private EditText               etName;
